@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Office</title>
+    <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-flex">
+            <h1>Smart Office</h1>
+            <button id="themeBtn" type="button" class="btn">Ciemny motyw</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="box">
+            <h2>Termin rezerwacji</h2>
+            <div class="filters">
+                <div>
+                    <label for="filterDate">Data</label>
+                    <input type="date" id="filterDate">
+                </div>
+                <div>
+                    <label for="filterStart">Od godziny</label>
+                    <input type="time" id="filterStart">
+                </div>
+                <div>
+                    <label for="filterEnd">Do godziny</label>
+                    <input type="time" id="filterEnd">
+                </div>
+            </div>
+        </section>
+
+        <section class="box">
+            <div class="office-top">
+                <h2>Mapa biura</h2>
+                <div class="legend">
+                    <span><i class="dot free"></i> Wolne</span>
+                    <span><i class="dot busy"></i> Zajete</span>
+                    <span><i class="dot chosen"></i> Wybrane</span>
+                </div>
+            </div>
+            <div id="officeGrid" class="office-grid"></div>
+        </section>
+
+        <section class="box">
+            <h2>Aktywne rezerwacje</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Stanowisko / Sala</th>
+                            <th>Typ</th>
+                            <th>Osoba</th>
+                            <th>Data</th>
+                            <th>Od</th>
+                            <th>Do</th>
+                            <th>Akcja</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reservationsList"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-box">
+            <div class="modal-head">
+                <h3 id="modalTitle">Rezerwacja</h3>
+                <button id="closeModal" type="button" class="close-btn">&times;</button>
+            </div>
+            <form id="bookingForm">
+                <input type="hidden" id="resourceId">
+
+                <div class="field">
+                    <label for="userName">Imie i nazwisko</label>
+                    <input type="text" id="userName" placeholder="np. Jan Kowalski">
+                    <small id="nameError" class="error"></small>
+                </div>
+
+                <div class="field">
+                    <label for="modalDate">Data</label>
+                    <input type="date" id="modalDate">
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="modalStart">Od</label>
+                        <input type="time" id="modalStart">
+                    </div>
+                    <div class="field">
+                        <label for="modalEnd">Do</label>
+                        <input type="time" id="modalEnd">
+                    </div>
+                </div>
+
+                <small id="timeError" class="error"></small>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancelModal" class="btn">Anuluj</button>
+                    <button type="submit" class="btn btn-dark">Zarezerwuj</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toastBox" class="toast-box"></div>
+
+    <script src="js/app.js?v=5"></script>
+</body>
+</html>
